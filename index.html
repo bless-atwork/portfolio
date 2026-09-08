@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Blessing Kwenda — data science student with software engineering skills. Portfolio, projects, and contact."
+    />
+    <meta property="og:title" content="Blessing Kwenda — Portfolio" />
+    <meta
+      property="og:description"
+      content="Let's create data magic for your special project."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#55564e" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Outfit:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <title>Blessing Kwenda — Portfolio</title>
+  </head>
+  <body>
+    <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+    <div class="page">
+      <div class="frame" id="frame">
+        <header class="tile tile--header" data-tilt>
+          <a class="logo" href="#top">Blessing Kwenda</a>
+          <nav class="nav" aria-label="Primary">
+            <button type="button" class="nav__link" data-open="about">About</button>
+            <button type="button" class="nav__link" data-open="work">Work</button>
+            <a class="nav__link" href="mailto:blessatwork@gmail.com">Contact</a>
+          </nav>
+        </header>
+
+        <section class="tile tile--hero" data-tilt id="top">
+          <svg class="hero__mark" viewBox="0 0 64 64" aria-hidden="true">
+            <path
+              d="M32 6c2 10 8 16 18 18-10 2-16 8-18 18-2-10-8-16-18-18 10-2 16-8 18-18z"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.25"
+            />
+            <circle cx="32" cy="32" r="3" fill="currentColor" />
+          </svg>
+          <h1 class="hero__title">
+            Let’s create data <em>magic</em> for your special project.
+          </h1>
+        </section>
+
+        <aside class="tile tile--portrait" aria-label="Portrait placeholder">
+          <div class="portrait">
+            <div class="portrait__silhouette" aria-hidden="true"></div>
+            <p class="portrait__label">Portrait coming soon</p>
+          </div>
+        </aside>
+
+        <section class="tile tile--work" data-tilt>
+          <button type="button" class="work-row work-row--featured" data-open="work">
+            <div class="work-row__top">
+              <span>Data Science</span>
+              <span class="arrow" aria-hidden="true">↗</span>
+            </div>
+            <div class="work-thumb" aria-hidden="true">
+              <img src="/images/data-viz.jpg" alt="" />
+            </div>
+          </button>
+          <button type="button" class="work-row" data-open="work">
+            <span>Software Engineering</span>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </button>
+          <button type="button" class="work-row" data-open="work">
+            <span>Machine Learning</span>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </button>
+        </section>
+
+        <section class="tile tile--about" data-tilt data-open-tile="about">
+          <div class="about__icon" aria-hidden="true">
+            <svg viewBox="0 0 40 40">
+              <circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="1.2" />
+              <path
+                d="M12 24c2-6 14-6 16 0M20 12a4 4 0 110 8 4 4 0 010-8z"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.2"
+              />
+            </svg>
+          </div>
+          <p class="about__text">
+            I’m Blessing Kwenda, a data science student with software engineering
+            skills. I bring the same focus to code that I bring to sport and
+            landscape photography — patient, precise, and curious. Off the screen
+            you’ll find me at calm gatherings or lost in a good soundtrack.
+          </p>
+        </section>
+
+        <a
+          class="tile tile--contact"
+          href="mailto:blessatwork@gmail.com"
+          data-tilt
+        >
+          <div class="contact__top">
+            <span>Have some questions?</span>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </div>
+          <p class="contact__title">Contact me.</p>
+        </a>
+
+        <section class="tile tile--socials" data-tilt>
+          <a
+            href="https://github.com/bless-atwork"
+            target="_blank"
+            rel="noopener noreferrer"
+            >GitHub</a
+          >
+          <a href="mailto:blessatwork@gmail.com">Email</a>
+        </section>
+      </div>
+    </div>
+
+    <div
+      class="overlay"
+      id="overlay-about"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="about-heading"
+      hidden
+    >
+      <button type="button" class="overlay__close" data-close aria-label="Close about">
+        ×
+      </button>
+      <div class="overlay__inner">
+        <p class="eyebrow">About</p>
+        <h2 id="about-heading">Focused on data.<br /><em>Grounded in craft.</em></h2>
+        <p class="overlay__lead">
+          I’m Blessing Kwenda, a data science student with software engineering
+          skills. I bring the same focus to code that I bring to sport and
+          landscape photography — patient, precise, and curious. Off the screen
+          you’ll find me at calm gatherings or lost in a good soundtrack.
+        </p>
+        <p class="overlay__body">
+          I like clean experiments, readable code, and solutions that hold up
+          when the data gets messy.
+        </p>
+        <ul class="interest-list" id="interest-list"></ul>
+      </div>
+    </div>
+
+    <div
+      class="overlay"
+      id="overlay-work"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="work-heading"
+      hidden
+    >
+      <button type="button" class="overlay__close" data-close aria-label="Close work">
+        ×
+      </button>
+      <div class="overlay__inner">
+        <p class="eyebrow">Work</p>
+        <h2 id="work-heading">Skills &amp; selected work</h2>
+        <div class="skills-grid" id="skills-grid"></div>
+        <div class="projects" id="projects"></div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
