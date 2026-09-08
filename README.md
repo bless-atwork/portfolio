@@ -28,12 +28,21 @@ npm run preview
 
 Firebase Hosting project: `blessatworkportolio`
 
+Live site: https://blessatworkportolio.web.app
+
 ```bash
 npm run build
 npx firebase deploy --only hosting
 ```
 
-Pushing to `main` also deploys via GitHub Actions.
+Pushing to `main` deploys via GitHub Actions once the Firebase service account secret is set:
+
+```bash
+# One-time: connect GitHub Actions to Firebase Hosting
+npx firebase-tools init hosting:github
+```
+
+That creates `FIREBASE_SERVICE_ACCOUNT_BLESSATWORKPORTOLIO` in the repo secrets. Vite Firebase keys are already stored as `VITE_FIREBASE_*` secrets.
 
 ## Customize
 
