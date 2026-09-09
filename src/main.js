@@ -29,7 +29,24 @@ async function initFirebase() {
   }
 }
 
+function skillCardsHtml(groups) {
+  return groups
+    .map(
+      (group) => `
+      <article class="skill-card">
+        <h3>${group.category}</h3>
+        <ul>${group.items.map((item) => `<li>${item}</li>`).join('')}</ul>
+      </article>`,
+    )
+    .join('')
+}
+
 function populateOverlays() {
+  const aboutLead = document.getElementById('about-lead')
+  const aboutBody = document.getElementById('about-body')
+  if (aboutLead) aboutLead.textContent = site.bio
+  if (aboutBody) aboutBody.textContent = site.howIWork
+
   const interestList = document.getElementById('interest-list')
   if (interestList) {
     interestList.innerHTML = site.interests
@@ -37,17 +54,36 @@ function populateOverlays() {
       .join('')
   }
 
-  const skillsGrid = document.getElementById('skills-grid')
-  if (skillsGrid) {
-    skillsGrid.innerHTML = site.skills
-      .map(
-        (group) => `
-      <article class="skill-card">
-        <h3>${group.category}</h3>
-        <ul>${group.items.map((item) => `<li>${item}</li>`).join('')}</ul>
-      </article>`,
-      )
+  const educationList = document.getElementById('education-list')
+  if (educationList) {
+    educationList.innerHTML = site.education
+      .map((item) => {
+        const statusLabel =
+          item.status === 'completed' ? 'Completed' : 'In progress'
+        const title = item.url
+          ? `<a href="${item.url}" target="_blank" rel="noopener noreferrer">${item.title}</a>`
+          : item.title
+
+        return `
+      <article class="edu-card edu-card--${item.status}">
+        <div class="edu-card__top">
+          <span class="edu-badge">${statusLabel}</span>
+          <span class="edu-meta">${item.meta}</span>
+        </div>
+        <h3>${title}</h3>
+        <p class="edu-institution">${item.institution}</p>
+        <p class="edu-blurb">${item.blurb}</p>
+        <ul class="edu-highlights">
+          ${item.highlights.map((h) => `<li>${h}</li>`).join('')}
+        </ul>
+      </article>`
+      })
       .join('')
+  }
+
+  const educationSkills = document.getElementById('education-skills-grid')
+  if (educationSkills) {
+    educationSkills.innerHTML = skillCardsHtml(site.skills)
   }
 
   const projects = document.getElementById('projects')
@@ -71,6 +107,7 @@ function populateOverlays() {
 function initOverlays() {
   const overlays = {
     about: document.getElementById('overlay-about'),
+    education: document.getElementById('overlay-education'),
     work: document.getElementById('overlay-work'),
   }
 
@@ -138,35 +175,6 @@ function initOverlays() {
   })
 }
 
-function initTilt() {
-  if (reducedMotion) return
-
-  const max = 6
-  const tiles = document.querySelectorAll('[data-tilt]')
-
-  tiles.forEach((tile) => {
-    let frame = 0
-
-    tile.addEventListener('pointermove', (e) => {
-      const rect = tile.getBoundingClientRect()
-      const x = (e.clientX - rect.left) / rect.width
-      const y = (e.clientY - rect.top) / rect.height
-      const rotateY = (x - 0.5) * max * 2
-      const rotateX = (0.5 - y) * max * 2
-
-      cancelAnimationFrame(frame)
-      frame = requestAnimationFrame(() => {
-        tile.style.transform = `rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateZ(0)`
-      })
-    })
-
-    tile.addEventListener('pointerleave', () => {
-      cancelAnimationFrame(frame)
-      tile.style.transform = 'rotateX(0deg) rotateY(0deg) translateZ(0)'
-    })
-  })
-}
-
 function initEntrance() {
   if (reducedMotion) return
 
@@ -181,18 +189,7 @@ function initEntrance() {
   })
 }
 
-async function bootScene() {
-  try {
-    const { initScene } = await import('./scene.js')
-    initScene(document.getElementById('bg-canvas'))
-  } catch {
-    // WebGL is optional.
-  }
-}
-
 populateOverlays()
 initOverlays()
-initTilt()
 initEntrance()
-bootScene()
 initFirebase()

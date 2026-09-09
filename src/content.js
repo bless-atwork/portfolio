@@ -4,10 +4,10 @@ export const site = {
   tagline: "Let's create data magic for your special project.",
   email: 'blessatwork@gmail.com',
   github: 'https://github.com/bless-atwork',
-  role: 'Data science student with software engineering skills',
-  bio: "I'm Blessing Kwenda, a data science student with software engineering skills. I bring the same focus to code that I bring to sport and landscape photography — patient, precise, and curious. Off the screen you'll find me at calm gatherings or lost in a good soundtrack.",
+  role: 'Data science graduate with software engineering foundations, advancing into cybersecurity',
+  bio: "I'm Blessing Kwenda. I've completed a Higher Certificate in Information Systems (Software Development) and a BSc Honours in Information Technology: Data Science at Eduvos. I bring the same focus to code that I bring to sport and landscape photography — patient, precise, and curious. Off the screen you'll find me at calm gatherings or lost in a good soundtrack.",
   howIWork:
-    'I like clean experiments, readable code, and solutions that hold up when the data gets messy.',
+    'I like clean experiments, readable code, and solutions that hold up when the data gets messy. I am currently building cybersecurity competence through the ISC2 certification pathway.',
   interests: [
     'Sports',
     'Calm events',
@@ -17,6 +17,7 @@ export const site = {
   ],
   nav: [
     { id: 'about', label: 'About' },
+    { id: 'education', label: 'Education' },
     { id: 'work', label: 'Work' },
     { id: 'contact', label: 'Contact', href: 'mailto:blessatwork@gmail.com' },
   ],
@@ -34,18 +35,105 @@ export const site = {
       blurb: 'Models that turn patterns into practical predictions.',
     },
   ],
+  education: [
+    {
+      status: 'completed',
+      title: 'Higher Certificate in Information Systems: Software Development',
+      institution: 'Eduvos',
+      meta: 'SAQA ID 120688 · NQF Level 5',
+      blurb:
+        'Career-focused qualification with a strong practical foundation in programming, databases, and application development — including program design, software engineering, and technical project work.',
+      highlights: [
+        'Java / C# / PHP',
+        'Python program design',
+        'SQL & databases',
+        'Database design',
+        'Linux',
+        'UML & software engineering',
+        'Mobile development',
+      ],
+    },
+    {
+      status: 'completed',
+      title: 'Bachelor of Science Honours in Information Technology: Data Science',
+      institution: 'Eduvos',
+      meta: 'SAQA ID 120723 · NQF Level 8',
+      blurb:
+        'Postgraduate specialisation covering analytics, machine learning methods, NLP, forecasting, microservices, and a substantial research project — with emphasis on communicating insights clearly.',
+      highlights: [
+        'Python & R analytics',
+        'Data mining & ETL',
+        'NLP with Python',
+        'Time-series forecasting',
+        'Data visualisation',
+        'Microservices & APIs',
+        'Research methods',
+      ],
+    },
+    {
+      status: 'in-progress',
+      title: 'ISC2 Cybersecurity Certifications',
+      institution: 'ISC2',
+      meta: 'In progress · Vendor-neutral pathway',
+      blurb:
+        'Building professional cybersecurity competence — defending systems and people, managing risk, and practising with ethical, employer-trusted standards.',
+      highlights: [
+        'Security foundations',
+        'Risk awareness',
+        'Secure practices',
+        'Professional ethics',
+      ],
+      url: 'https://www.isc2.org/certifications',
+    },
+  ],
   skills: [
     {
-      category: 'Data Science',
-      items: ['Python', 'Data Analysis', 'Visualization', 'Statistics'],
+      category: 'Software Development',
+      items: [
+        'Java',
+        'C#',
+        'PHP',
+        'Python',
+        'Program design',
+        'Software engineering & UML',
+        'Mobile development',
+        'Linux',
+      ],
     },
     {
-      category: 'Software Engineering',
-      items: ['JavaScript', 'HTML & CSS', 'Git', 'APIs'],
+      category: 'Data Science & Analytics',
+      items: [
+        'Python for data science',
+        'R analytics',
+        'Data mining & administration',
+        'NLP (NLTK)',
+        'Time-series & forecasting',
+        'Machine learning foundations',
+        'Data visualisation & storytelling',
+        'Research methods',
+      ],
     },
     {
-      category: 'Machine Learning',
-      items: ['Supervised learning', 'Feature engineering', 'Model evaluation'],
+      category: 'Cybersecurity Foundations',
+      items: [
+        'Security foundations',
+        'Risk awareness',
+        'Secure practices',
+        'Professional ethics',
+        'ISC2 pathway (in progress)',
+      ],
+    },
+    {
+      category: 'Tools & Platforms',
+      items: [
+        'SQL / MySQL / SQL Server',
+        'Database design & normalisation',
+        'RESTful APIs & microservices',
+        'SAS Viya (time series)',
+        'Microsoft Office',
+        'Git & JavaScript',
+        'HTML & CSS',
+      ],
     },
   ],
   projects: [
@@ -62,8 +150,8 @@ export const site = {
       repo: 'portfolio',
       url: 'https://github.com/bless-atwork/portfolio',
       summary:
-        'A high-end bento-grid personal site with subtle WebGL particles, 3D tile tilt, and Firebase Hosting.',
-      tags: ['Vite', 'Three.js', 'GSAP'],
+        'A high-end bento-grid personal site showcasing education, skills, and selected work — hosted on Firebase.',
+      tags: ['Vite', 'CSS Grid', 'Firebase'],
     },
   ],
 }
