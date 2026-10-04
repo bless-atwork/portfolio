@@ -89,17 +89,23 @@ function populateOverlays() {
   const projects = document.getElementById('projects')
   if (projects) {
     projects.innerHTML = site.projects
-      .map(
-        (project) => `
-      <a class="project-card" href="${project.url}" target="_blank" rel="noopener noreferrer">
+      .map((project) => {
+        const hasUrl = Boolean(project.url)
+        const tag = hasUrl ? 'a' : 'article'
+        const attrs = hasUrl
+          ? `href="${project.url}" target="_blank" rel="noopener noreferrer"`
+          : ''
+
+        return `
+      <${tag} class="project-card" ${attrs}>
         <div class="project-card__top">
           <h3>${project.title}</h3>
-          <span class="arrow" aria-hidden="true">↗</span>
+          ${hasUrl ? '<span class="arrow" aria-hidden="true">↗</span>' : ''}
         </div>
         <p>${project.summary}</p>
-        <div class="tags">${project.tags.map((tag) => `<span>${tag}</span>`).join('')}</div>
-      </a>`,
-      )
+        <div class="tags">${project.tags.map((tagName) => `<span>${tagName}</span>`).join('')}</div>
+      </${tag}>`
+      })
       .join('')
   }
 }
@@ -120,7 +126,16 @@ function initOverlays() {
     active = el
     el.hidden = false
     document.body.classList.add('is-locked')
-    requestAnimationFrame(() => el.classList.add('is-open'))
+    requestAnimationFrame(() => {
+      el.classList.add('is-open')
+      if (!reducedMotion) {
+        gsap.fromTo(
+          el.querySelector('.overlay__inner'),
+          { y: 24, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.55, ease: 'power3.out' },
+        )
+      }
+    })
     el.querySelector('[data-close]')?.focus()
   }
 
@@ -141,7 +156,7 @@ function initOverlays() {
     }
 
     el.classList.remove('is-open')
-    window.setTimeout(finish, 420)
+    window.setTimeout(finish, 480)
   }
 
   document.querySelectorAll('[data-open]').forEach((btn) => {
@@ -179,14 +194,28 @@ function initEntrance() {
   if (reducedMotion) return
 
   const tiles = document.querySelectorAll('.tile')
+  const lines = document.querySelectorAll('.hero__line')
+
   gsap.from(tiles, {
     opacity: 0,
-    y: 28,
-    duration: 0.85,
-    stagger: 0.07,
+    y: 36,
+    duration: 1,
+    stagger: 0.08,
     ease: 'power3.out',
     clearProps: 'opacity,transform',
   })
+
+  if (lines.length) {
+    gsap.from(lines, {
+      opacity: 0,
+      y: 22,
+      duration: 0.9,
+      stagger: 0.12,
+      delay: 0.2,
+      ease: 'power3.out',
+      clearProps: 'opacity,transform',
+    })
+  }
 }
 
 populateOverlays()
