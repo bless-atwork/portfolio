@@ -65,6 +65,8 @@ body {
   align-items: center;
   justify-content: center;
   padding: clamp(16px, 3vw, 40px);
+  transform-origin: center center;
+  transition: filter 0.5s var(--ease), transform 0.5s var(--ease);
 }
 
 .frame {
@@ -509,20 +511,19 @@ body {
   position: fixed;
   inset: 0;
   z-index: 50;
-  background: rgba(12, 12, 12, 0.72);
-  backdrop-filter: blur(28px) saturate(1.15);
-  -webkit-backdrop-filter: blur(28px) saturate(1.15);
+  isolation: isolate;
+  background: rgba(10, 10, 10, 0.82);
+  backdrop-filter: blur(40px) saturate(1.1);
+  -webkit-backdrop-filter: blur(40px) saturate(1.1);
   color: var(--cream);
   overflow-y: auto;
   padding: clamp(24px, 5vw, 64px);
-  opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.5s var(--ease), visibility 0.5s var(--ease);
+  transition: visibility 0.5s var(--ease);
 }
 
 .overlay.is-open {
-  opacity: 1;
   visibility: visible;
   pointer-events: auto;
 }
@@ -561,6 +562,11 @@ body {
   margin: 40px auto 0;
   transform: translateY(18px);
   opacity: 0;
+  padding: clamp(24px, 4vw, 40px);
+  border-radius: 28px;
+  background: rgba(16, 16, 16, 0.55);
+  border: 1px solid rgba(228, 220, 200, 0.08);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
   transition: transform 0.55s var(--ease), opacity 0.55s var(--ease);
 }
 
@@ -863,6 +869,12 @@ body.is-locked {
   overflow: hidden;
 }
 
+body.is-locked .page {
+  filter: blur(18px) saturate(0.85);
+  transform: scale(0.985);
+  pointer-events: none;
+}
+
 @keyframes floatMark {
   0%,
   100% {
@@ -949,7 +961,8 @@ body.is-locked {
   .skill-card,
   .cv-cta,
   .work-thumb img,
-  .hero__mark {
+  .hero__mark,
+  .page {
     transition: none !important;
     animation: none !important;
   }
@@ -959,5 +972,16 @@ body.is-locked {
   .edu-card:hover,
   .skill-card:hover {
     transform: none;
+  }
+
+  body.is-locked .page {
+    filter: none;
+    transform: none;
+  }
+
+  .overlay {
+    background: rgba(10, 10, 10, 0.94);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
 }
