@@ -390,7 +390,7 @@ def build_cv() -> Document:
     # --- Interests ---
     section_heading(doc, "Interests")
     bullet(doc, "Full-stack product building and collaborative technical projects")
-    bullet(doc, "Sports, calm community gatherings, landscape photography, and music")
+    bullet(doc, "Sports, calm community gatherings, photography, and music")
 
     # --- References ---
     section_heading(doc, "References")
@@ -546,7 +546,7 @@ def write_html_fallback(html_path: Path) -> None:
   <h2>Interests</h2>
   <ul>
     <li>Full-stack product building and collaborative technical projects</li>
-    <li>Sports, calm community gatherings, landscape photography, and music</li>
+    <li>Sports, calm community gatherings, photography, and music</li>
   </ul>
 
   <h2>References</h2>
