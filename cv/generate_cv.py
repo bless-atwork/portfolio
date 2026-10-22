@@ -137,7 +137,7 @@ def build_cv() -> Document:
     links.alignment = WD_ALIGN_PARAGRAPH.CENTER
     set_paragraph_spacing(links, before=0, after=6, line=1.05)
     lr = links.add_run(
-        "github.com/bless-atwork  ·  blessatworkportolio.web.app"
+        "github.com/bless-atwork  ·  blessatworkportfolio.web.app"
     )
     set_run_font(lr, size=9.5, color=MUTED)
 
@@ -385,7 +385,7 @@ def build_cv() -> Document:
     # --- Profile links ---
     section_heading(doc, "Profile Links")
     bullet(doc, "GitHub: https://github.com/bless-atwork")
-    bullet(doc, "Portfolio: https://blessatworkportolio.web.app")
+    bullet(doc, "Portfolio: https://blessatworkportfolio.web.app")
 
     # --- Interests ---
     section_heading(doc, "Interests")
@@ -456,7 +456,7 @@ def write_html_fallback(html_path: Path) -> None:
   <h1>BLESSING KWENDA</h1>
   <p class="headline">FULL-STACK DEVELOPER  |  DATA SCIENCE  |  SOFTWARE ENGINEERING</p>
   <p class="contact">Pretoria, South Africa · +27 68 240 6775 · blessatwork@gmail.com</p>
-  <p class="contact">github.com/bless-atwork · blessatworkportolio.web.app</p>
+  <p class="contact">github.com/bless-atwork · blessatworkportfolio.web.app</p>
 
   <h2>Professional Summary</h2>
   <p>Resourceful Full-Stack Developer and Data Science practitioner with a completed undergraduate Bachelor of Science in Information Technology: Data Science and a Higher Certificate in Information Systems (Software Development) from Eduvos. Ships production web products end-to-end — React/TypeScript front ends, Node.js APIs, Firebase cloud services, and secure client-facing workflows — while applying Python/R analytics, NLP, and visualisation where data drives decisions. Currently deepening cybersecurity competence through the ISC2 pathway. Comfortable owning features across product, engineering, and operations in real business environments.</p>
@@ -540,7 +540,7 @@ def write_html_fallback(html_path: Path) -> None:
   <h2>Profile Links</h2>
   <ul>
     <li>GitHub: https://github.com/bless-atwork</li>
-    <li>Portfolio: https://blessatworkportolio.web.app</li>
+    <li>Portfolio: https://blessatworkportfolio.web.app</li>
   </ul>
 
   <h2>Interests</h2>

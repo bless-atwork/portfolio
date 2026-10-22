@@ -28,7 +28,9 @@ npm run preview
 
 Firebase Hosting project: `blessatworkportolio`
 
-Live site: https://blessatworkportolio.web.app
+Live site: https://blessatworkportfolio.web.app
+
+The Firebase project ID is still `blessatworkportolio` (created with that spelling). The public Hosting site is `blessatworkportfolio`. The old URL redirects to the correct one.
 
 ```bash
 npm run build
