@@ -6,7 +6,7 @@ export const site = {
   github: 'https://github.com/bless-atwork',
   cvUrl: '/Blessing_Kwenda_CV.pdf',
   role: 'Full-stack developer and data science graduate advancing into cybersecurity',
-  bio: "I'm Blessing Kwenda. I've completed a Higher Certificate in Information Systems (Software Development) and an undergraduate Bachelor of Science in Information Technology: Data Science at Eduvos. I bring the same focus to code that I bring to sport and landscape photography — patient, precise, and curious. Off the screen you'll find me at calm gatherings or lost in a good soundtrack.",
+  bio: "I like problems that look messy until the pattern shows. I'm Blessing Kwenda — software-trained, data-science qualified, and currently deepening cybersecurity through ISC2. I completed a Higher Certificate in Information Systems (Software Development) and an undergraduate BSc in Information Technology: Data Science at Eduvos. Off-screen I stay in motion: sport, landscape photography, music, and calm gatherings.",
   howIWork:
     'I like clean experiments, readable code, and solutions that hold up when the data gets messy. I ship product end-to-end — from React interfaces to Firebase backends — and I am currently building cybersecurity competence through the ISC2 certification pathway.',
   interests: [
