@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="canonical" href="https://blessatworkportfolio.web.app/" />
+    <meta
+      name="description"
+      content="Blessing Kwenda — full-stack developer and data science graduate. Education, skills, projects, and CV."
+    />
+    <meta property="og:title" content="Blessing Kwenda — Portfolio" />
+    <meta
+      property="og:description"
+      content="Let's create data magic for your special project."
+    />
+    <meta property="og:url" content="https://blessatworkportfolio.web.app/" />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#4a4b44" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Outfit:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <title>Blessing Kwenda — Portfolio</title>
+  </head>
+  <body>
+    <div class="ambient" aria-hidden="true"></div>
+
+    <div class="page">
+      <div class="frame" id="frame">
+        <header class="tile tile--header tile--glass">
+          <a class="logo" href="#top">bless-atwork</a>
+          <nav class="nav" aria-label="Primary">
+            <button type="button" class="nav__link" data-open="about">About</button>
+            <button type="button" class="nav__link" data-open="education">
+              Education
+            </button>
+            <button type="button" class="nav__link" data-open="work">Work</button>
+            <a class="nav__link" href="mailto:blessatwork@gmail.com">Contact</a>
+            <a
+              class="nav__link nav__link--cv"
+              href="/Blessing_Kwenda_CV.pdf"
+              download="Blessing_Kwenda_CV.pdf"
+              >CV</a
+            >
+          </nav>
+        </header>
+
+        <section class="tile tile--hero" id="top">
+          <svg class="hero__mark" viewBox="0 0 64 64" aria-hidden="true">
+            <path
+              d="M32 6c2 10 8 16 18 18-10 2-16 8-18 18-2-10-8-16-18-18 10-2 16-8 18-18z"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.25"
+            />
+            <circle cx="32" cy="32" r="3" fill="currentColor" />
+          </svg>
+          <p class="hero__eyebrow">Data science · Software · Product</p>
+          <h1 class="hero__title">
+            <span class="hero__line">Let’s create data</span>
+            <span class="hero__line"><em>magic</em> for your</span>
+            <span class="hero__line">special project.</span>
+          </h1>
+        </section>
+
+        <aside class="tile tile--portrait" aria-label="Portrait placeholder">
+          <div class="portrait">
+            <div class="portrait__glow" aria-hidden="true"></div>
+            <div class="portrait__silhouette" aria-hidden="true"></div>
+            <p class="portrait__label">Portrait coming soon</p>
+          </div>
+        </aside>
+
+        <section class="tile tile--work">
+          <button type="button" class="work-row work-row--featured" data-open="work">
+            <div class="work-row__top">
+              <span>Selected work</span>
+              <span class="arrow" aria-hidden="true">↗</span>
+            </div>
+            <div class="work-thumb" aria-hidden="true">
+              <img src="/images/data-viz.jpg" alt="" />
+            </div>
+          </button>
+          <button type="button" class="work-row" data-open="work">
+            <span>Origin CRM</span>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </button>
+          <button type="button" class="work-row" data-open="education">
+            <span>Education &amp; Skills</span>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </button>
+        </section>
+
+        <section class="tile tile--about" data-open-tile="about">
+          <div class="about__icon" aria-hidden="true">
+            <svg viewBox="0 0 40 40">
+              <circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="1.2" />
+              <path
+                d="M12 24c2-6 14-6 16 0M20 12a4 4 0 110 8 4 4 0 010-8z"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.2"
+              />
+            </svg>
+          </div>
+          <p class="about__text">
+            I turn messy data into software people can actually use. Software-trained,
+            data-science qualified, currently sharpening cybersecurity. I bring good,
+            vibrant energy to the work — curious enough to keep digging, patient enough
+            to get it right. Same energy off-screen: sport, photography, and a good
+            soundtrack.
+          </p>
+        </section>
+
+        <div class="tile tile--contact">
+          <div class="contact__top">
+            <span>Have some questions?</span>
+            <a class="arrow contact__mail" href="mailto:blessatwork@gmail.com" aria-label="Email">↗</a>
+          </div>
+          <a class="contact__title" href="mailto:blessatwork@gmail.com">Contact me.</a>
+          <a
+            class="contact__cv"
+            href="/Blessing_Kwenda_CV.pdf"
+            download="Blessing_Kwenda_CV.pdf"
+            >Download CV</a
+          >
+        </div>
+
+        <section class="tile tile--socials">
+          <a
+            href="https://github.com/bless-atwork"
+            target="_blank"
+            rel="noopener noreferrer"
+            >GitHub</a
+          >
+          <a href="mailto:blessatwork@gmail.com">Email</a>
+          <a href="/Blessing_Kwenda_CV.pdf" download="Blessing_Kwenda_CV.pdf">CV</a>
+        </section>
+      </div>
+    </div>
+
+    <div
+      class="overlay"
+      id="overlay-about"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="about-heading"
+      hidden
+    >
+      <button type="button" class="overlay__close" data-close aria-label="Close about">
+        ×
+      </button>
+      <div class="overlay__inner">
+        <p class="eyebrow">About</p>
+        <h2 id="about-heading">Focused on data.<br /><em>Grounded in craft.</em></h2>
+        <p class="overlay__lead" id="about-lead"></p>
+        <p class="overlay__body" id="about-body"></p>
+        <ul class="interest-list" id="interest-list"></ul>
+      </div>
+    </div>
+
+    <div
+      class="overlay"
+      id="overlay-education"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="education-heading"
+      hidden
+    >
+      <button
+        type="button"
+        class="overlay__close"
+        data-close
+        aria-label="Close education"
+      >
+        ×
+      </button>
+      <div class="overlay__inner overlay__inner--wide">
+        <p class="eyebrow">Education</p>
+        <h2 id="education-heading">Credentials &amp; skills</h2>
+        <p class="overlay__lead">
+          Formal study in software development and data science, with cybersecurity
+          training underway through ISC2.
+        </p>
+        <div class="education-list" id="education-list"></div>
+        <h3 class="overlay__subhead">Skills</h3>
+        <div class="skills-grid" id="education-skills-grid"></div>
+        <a
+          class="cv-cta"
+          href="/Blessing_Kwenda_CV.pdf"
+          download="Blessing_Kwenda_CV.pdf"
+          >Download full CV</a
+        >
+      </div>
+    </div>
+
+    <div
+      class="overlay"
+      id="overlay-work"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="work-heading"
+      hidden
+    >
+      <button type="button" class="overlay__close" data-close aria-label="Close work">
+        ×
+      </button>
+      <div class="overlay__inner">
+        <p class="eyebrow">Work</p>
+        <h2 id="work-heading">Selected work</h2>
+        <div class="projects" id="projects"></div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
