@@ -51,6 +51,10 @@ That creates `FIREBASE_SERVICE_ACCOUNT_BLESSATWORKPORTOLIO` in the repo secrets.
 - Replace the portrait placeholder by adding `src/assets/portrait.jpg` and wiring it in `index.html`
 - Edit copy and projects in `src/content.js`
 
+## Security
+
+Daily checks live in `security_audit/`. Run `npm run audit:security` or read `security_audit/README.md`. Reports are written under `security_reports/` with secret values omitted.
+
 ## Links
 
 - GitHub: https://github.com/bless-atwork
