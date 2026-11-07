@@ -1,0 +1,7 @@
+[Unit]
+Description=Daily portfolio security audit
+
+[Service]
+Type=oneshot
+WorkingDirectory=@REPO_ROOT@
+ExecStart=/usr/bin/python3 -m security_audit

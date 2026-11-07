@@ -1,0 +1,46 @@
+{
+  "exclude_dir_names": [
+    ".git",
+    "node_modules",
+    "dist",
+    "dist-ssr",
+    ".firebase",
+    "coverage",
+    ".tools",
+    "__pycache__"
+  ],
+  "exclude_file_names": [
+    "package-lock.json",
+    "yarn.lock",
+    "pnpm-lock.yaml"
+  ],
+  "skip_prefixes": [
+    "security_audit/rules/",
+    "security_audit/.tools/",
+    "security_audit/tests/"
+  ],
+  "max_file_bytes": 800000,
+  "dependency_penalty_cap": 35,
+  "downgrade_development_severities": true,
+  "alert_severities": ["critical"],
+  "alert_exposures": [
+    "application",
+    "production-runtime",
+    "secret",
+    "database",
+    "ci"
+  ],
+  "database_host": "127.0.0.1",
+  "machine_inventory": true,
+  "weights": {
+    "critical": 25,
+    "high": 12,
+    "medium": 5,
+    "low": 2
+  },
+  "network": {
+    "npm_audit": true,
+    "external_scanners": true,
+    "snyk": false
+  }
+}

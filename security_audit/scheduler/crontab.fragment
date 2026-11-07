@@ -1,0 +1,2 @@
+# 02:00 in the machine's local timezone.
+0 2 * * * cd @REPO_ROOT@ && /usr/bin/python3 -m security_audit >> @REPO_ROOT@/logs/cron.log 2>&1
