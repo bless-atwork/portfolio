@@ -29,16 +29,41 @@ async function initFirebase() {
   }
 }
 
-function skillCardsHtml(groups) {
-  return groups
-    .map(
-      (group) => `
-      <article class="skill-card">
-        <h3>${group.category}</h3>
-        <ul>${group.items.map((item) => `<li>${item}</li>`).join('')}</ul>
-      </article>`,
-    )
-    .join('')
+function element(tag, className, text) {
+  const node = document.createElement(tag)
+  if (className) node.className = className
+  if (text != null) node.textContent = text
+  return node
+}
+
+const SAFE_EDUCATION_STATUS = new Set(['completed', 'in-progress'])
+
+function safeUrl(value) {
+  const url = String(value ?? '').trim()
+  if (url.startsWith('/') && !url.startsWith('//') && !url.startsWith('/\\')) return url
+  let parsed
+  try {
+    parsed = new URL(url)
+  } catch {
+    return ''
+  }
+  if (parsed.protocol === 'https:' || parsed.protocol === 'http:' || parsed.protocol === 'mailto:') {
+    return parsed.href
+  }
+  return ''
+}
+
+function renderSkillCards(groups) {
+  const fragment = document.createDocumentFragment()
+  for (const group of groups) {
+    const card = element('article', 'skill-card')
+    card.append(element('h3', '', group.category))
+    const list = document.createElement('ul')
+    for (const item of group.items) list.append(element('li', '', item))
+    card.append(list)
+    fragment.append(card)
+  }
+  return fragment
 }
 
 function populateOverlays() {
@@ -49,64 +74,71 @@ function populateOverlays() {
 
   const interestList = document.getElementById('interest-list')
   if (interestList) {
-    interestList.innerHTML = site.interests
-      .map((item) => `<li>${item}</li>`)
-      .join('')
+    interestList.replaceChildren(...site.interests.map((item) => element('li', '', item)))
   }
 
   const educationList = document.getElementById('education-list')
   if (educationList) {
-    educationList.innerHTML = site.education
-      .map((item) => {
-        const statusLabel =
-          item.status === 'completed' ? 'Completed' : 'In progress'
-        const title = item.url
-          ? `<a href="${item.url}" target="_blank" rel="noopener noreferrer">${item.title}</a>`
-          : item.title
+    const cards = site.education.map((item) => {
+      const status = SAFE_EDUCATION_STATUS.has(item.status) ? item.status : 'completed'
+      const statusLabel = status === 'completed' ? 'Completed' : 'In progress'
+      const card = element('article', `edu-card edu-card--${status}`)
+      const top = element('div', 'edu-card__top')
+      top.append(element('span', 'edu-badge', statusLabel), element('span', 'edu-meta', item.meta))
+      card.append(top)
 
-        return `
-      <article class="edu-card edu-card--${item.status}">
-        <div class="edu-card__top">
-          <span class="edu-badge">${statusLabel}</span>
-          <span class="edu-meta">${item.meta}</span>
-        </div>
-        <h3>${title}</h3>
-        <p class="edu-institution">${item.institution}</p>
-        <p class="edu-blurb">${item.blurb}</p>
-        <ul class="edu-highlights">
-          ${item.highlights.map((h) => `<li>${h}</li>`).join('')}
-        </ul>
-      </article>`
-      })
-      .join('')
+      const heading = document.createElement('h3')
+      const href = safeUrl(item.url)
+      if (href) {
+        const link = element('a', '', item.title)
+        link.href = href
+        link.target = '_blank'
+        link.rel = 'noopener noreferrer'
+        heading.append(link)
+      } else {
+        heading.textContent = item.title
+      }
+      card.append(heading)
+      card.append(element('p', 'edu-institution', item.institution))
+      card.append(element('p', 'edu-blurb', item.blurb))
+      const highlights = element('ul', 'edu-highlights')
+      for (const highlight of item.highlights) highlights.append(element('li', '', highlight))
+      card.append(highlights)
+      return card
+    })
+    educationList.replaceChildren(...cards)
   }
 
   const educationSkills = document.getElementById('education-skills-grid')
   if (educationSkills) {
-    educationSkills.innerHTML = skillCardsHtml(site.skills)
+    educationSkills.replaceChildren(renderSkillCards(site.skills))
   }
 
   const projects = document.getElementById('projects')
   if (projects) {
-    projects.innerHTML = site.projects
-      .map((project) => {
-        const hasUrl = Boolean(project.url)
-        const tag = hasUrl ? 'a' : 'article'
-        const attrs = hasUrl
-          ? `href="${project.url}" target="_blank" rel="noopener noreferrer"`
-          : ''
-
-        return `
-      <${tag} class="project-card" ${attrs}>
-        <div class="project-card__top">
-          <h3>${project.title}</h3>
-          ${hasUrl ? '<span class="arrow" aria-hidden="true">↗</span>' : ''}
-        </div>
-        <p>${project.summary}</p>
-        <div class="tags">${project.tags.map((tagName) => `<span>${tagName}</span>`).join('')}</div>
-      </${tag}>`
-      })
-      .join('')
+    const cards = site.projects.map((project) => {
+      const href = safeUrl(project.url)
+      const card = href ? element('a', 'project-card') : element('article', 'project-card')
+      if (href) {
+        card.href = href
+        card.target = '_blank'
+        card.rel = 'noopener noreferrer'
+      }
+      const top = element('div', 'project-card__top')
+      top.append(element('h3', '', project.title))
+      if (href) {
+        const arrow = element('span', 'arrow', '↗')
+        arrow.setAttribute('aria-hidden', 'true')
+        top.append(arrow)
+      }
+      card.append(top)
+      card.append(element('p', '', project.summary))
+      const tags = element('div', 'tags')
+      for (const tagName of project.tags) tags.append(element('span', '', tagName))
+      card.append(tags)
+      return card
+    })
+    projects.replaceChildren(...cards)
   }
 }
 
